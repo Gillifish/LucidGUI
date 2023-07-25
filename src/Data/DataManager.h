@@ -31,7 +31,7 @@ class DataManager
 public:
     DataManager(std::string filepath);
     void add(Account acc);
-    void remove(Account acc);
+    bool remove(Account acc);
     bool update(Account acc);
     void clear();
     AccountData &getByTag(std::string tag);

@@ -23,13 +23,26 @@ void LucidControl::add(DataManager &db)
     std::cout << "Enter Password: ";
     std::getline(std::cin, acc.password);
 
-    printf("%s\n%s\n%s\n", acc.tag.c_str(), acc.username.c_str(), acc.password.c_str());
-
     db.add(acc);
 }
 
 void LucidControl::remove(DataManager &db)
 {
+    Account acc;
+
+    std::cout << "Enter account name: ";
+    std::getline(std::cin, acc.tag);
+
+    std::cout << "Enter Username: ";
+    std::getline(std::cin, acc.username);
+
+    if (db.remove(acc))
+    {
+        printf("Account successfully removed...");
+    } else
+    {
+        printf("Account does not exist...");
+    }
 }
 
 void LucidControl::update(DataManager &db)

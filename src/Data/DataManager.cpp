@@ -54,15 +54,18 @@ void DataManager::add(Account acc)
     save();
 }
 
-void DataManager::remove(Account acc)
+bool DataManager::remove(Account acc)
 {
+    bool removed = false;
+
     m_accountData.erase(
         std::remove_if(m_accountData.begin(), m_accountData.end(),
                        [&](Account &a)
                        {
-                           if (a.tag == acc.tag && a.username == acc.username && a.password == acc.password)
+                           if (a.tag == acc.tag && a.username == acc.username)
                            {
                                m_size--;
+                               removed = true;
                                return true;
                            }
                            else
@@ -72,7 +75,15 @@ void DataManager::remove(Account acc)
                        }),
         m_accountData.end());
 
+    if (removed)
+    {
         save();
+        return true;
+    }
+    else
+    {
+        return false;
+    }
 }
 
 bool DataManager::update(Account acc)
