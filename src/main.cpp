@@ -13,13 +13,13 @@ int main()
         std::cout << e.tag << std::endl;
     }
 
-    std::cout << "Adding" << std::endl;
+    std::cout << "\nREMOVING...\n" << std::endl;
 
     Account acc;
-    acc.tag = "Goggle";
-    acc.username = "Drew";
+    acc.tag = "GilliNet";
+    acc.username = "Gillifish";
     acc.password = "3665";
-    db.add(acc);
+    db.remove(acc);
 
     for (auto e : data)
     {

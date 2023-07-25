@@ -10,7 +10,7 @@ void DataManager::loadFromFile()
 
     std::string line;
 
-    while(std::getline(inputFile, line))
+    while (std::getline(inputFile, line))
     {
         std::istringstream iss(line);
         Account acc;
@@ -26,20 +26,21 @@ void DataManager::loadFromFile()
     inputFile.close();
 }
 
-DataManager::DataManager(std::string filepath) :
-    m_filepath(filepath)
+DataManager::DataManager(std::string filepath) : m_filepath(filepath)
 {
     if (std::filesystem::exists(filepath))
     {
         loadFromFile();
-    } else
+    }
+    else
     {
         std::ofstream outputFile(filepath);
         if (outputFile.is_open())
         {
             outputFile.close();
             loadFromFile();
-        } else
+        }
+        else
         {
             throw std::runtime_error("ERROR: File could not be created...");
         }
@@ -55,9 +56,21 @@ void DataManager::add(Account acc)
 
 void DataManager::remove(Account acc)
 {
-    // TODO: remove logic
-
-    m_size--;
+    m_accountData.erase(
+        std::remove_if(m_accountData.begin(), m_accountData.end(),
+                       [&](Account &a)
+                       {
+                           if (a.tag == acc.tag && a.username == acc.username && a.password == acc.password)
+                           {
+                               m_size--;
+                               return true;
+                           }
+                           else
+                           {
+                               return false;
+                           }
+                       }),
+        m_accountData.end());
 }
 
 bool DataManager::update(Account acc)
