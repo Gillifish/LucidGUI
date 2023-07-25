@@ -7,10 +7,12 @@ project(LucidCpp
 set(CMAKE_CXX_STANDARD 20)
 
 add_subdirectory(src)
+add_subdirectory(dependencies)
 
 target_include_directories(main PRIVATE src
                                         src/IO
                                         src/Data
+                                        src/GUI
 )
 
-#target_link_libraries(main PRIVATE sfml-window sfml-graphics sfml-system sfml-audio ImGui-SFML::ImGui-SFML)
+target_link_libraries(main PRIVATE sfml-window sfml-graphics sfml-system sfml-audio ImGui-SFML::ImGui-SFML)

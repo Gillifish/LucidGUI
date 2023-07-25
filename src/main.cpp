@@ -2,6 +2,7 @@
 #include <algorithm>
 #include <DataManager.h>
 #include <Control.h>
+#include <App.h>
 
 int main(int argc, char *argv[])
 {
@@ -19,7 +20,16 @@ int main(int argc, char *argv[])
     std::transform(option.begin(), option.end(), option.begin(), [](unsigned char c)
                    { return std::tolower(c); });
 
-    if ((std::strcmp(option.c_str(), "a") == 0) || (std::strcmp(option.c_str(), "add") == 0))
+    if (std::strcmp(option.c_str(), "-gui") == 0)
+    {
+        float WINDOW_X = 640;
+        float WINDOW_Y = 480;
+        std::string windowTitle = "Lucid++";
+
+        App gui(WINDOW_X, WINDOW_Y, windowTitle, 60);
+        gui.run();
+    }
+    else if ((std::strcmp(option.c_str(), "a") == 0) || (std::strcmp(option.c_str(), "add") == 0))
     {
         LucidControl::add(db);
     }

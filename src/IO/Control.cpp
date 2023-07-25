@@ -4,10 +4,11 @@ void LucidControl::displayCommands()
 {
     printf("Usage: lucid [options]\n\n");
     printf("Options:\n");
+    printf("-gui         Uses the Lucid GUI\n");
     printf("a  | add     Adds an account\n");
-    printf("rm | remove  Adds an account\n");
-    printf("u  | update  Adds an account\n");
-    printf("l  | list    Adds an account\n");
+    printf("rm | remove  Removes an account\n");
+    printf("u  | update  Updates an account\n");
+    printf("l  | list    Lists all accounts\n");
 }
 
 void LucidControl::add(DataManager &db)
