@@ -71,6 +71,8 @@ void DataManager::remove(Account acc)
                            }
                        }),
         m_accountData.end());
+
+        save();
 }
 
 bool DataManager::update(Account acc)
