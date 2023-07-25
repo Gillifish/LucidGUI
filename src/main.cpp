@@ -1,28 +1,46 @@
 #include <iostream>
+#include <algorithm>
 #include <DataManager.h>
+#include <Control.h>
 
-int main()
+int main(int argc, char *argv[])
 {
     std::string path = "/Users/gillifish/Desktop/db.txt";
     DataManager db(path);
 
-    auto& data = db.data();
-
-    for (auto e : data)
+    if (argc != 2)
     {
-        std::cout << e.tag << std::endl;
+        LucidControl::displayCommands();
+        return 1;
     }
+    std::string option = argv[1];
 
-    std::cout << "\nREMOVING...\n" << std::endl;
+    // Makes any input for the second argument lowercase
+    std::transform(option.begin(), option.end(), option.begin(), [](unsigned char c)
+                   { return std::tolower(c); });
 
-    Account acc;
-    acc.tag = "GilliNet";
-    acc.username = "Gillifish";
-    acc.password = "3665";
-    db.remove(acc);
-
-    for (auto e : data)
+    if ((std::strcmp(option.c_str(), "a") == 0) || (std::strcmp(option.c_str(), "add") == 0))
     {
-        std::cout << e.tag << std::endl;
+        LucidControl::add(db);
+    }
+    else if ((std::strcmp(option.c_str(), "rm") == 0) || (std::strcmp(option.c_str(), "remove") == 0))
+    {
+        LucidControl::remove(db);
+    }
+    else if ((std::strcmp(option.c_str(), "u") == 0) || (std::strcmp(option.c_str(), "update") == 0))
+    {
+        LucidControl::update(db);
+    }
+    else if ((std::strcmp(option.c_str(), "l") == 0) || (std::strcmp(option.c_str(), "list") == 0))
+    {
+        LucidControl::list(db);
+    }
+    else if (std::strcmp(option.c_str(), "wipe") == 0)
+    {
+        LucidControl::wipe(db);
+    }
+    else
+    {
+        std::cout << "Unknown command..." << std::endl;
     }
 }

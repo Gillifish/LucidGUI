@@ -80,6 +80,13 @@ bool DataManager::update(Account acc)
     return true;
 }
 
+void DataManager::clear()
+{
+    std::ofstream outputFile(m_filepath, std::ofstream::out);
+    outputFile.clear();
+    outputFile.close();
+}
+
 void DataManager::save()
 {
     std::ofstream outputFile(m_filepath, std::ofstream::out);

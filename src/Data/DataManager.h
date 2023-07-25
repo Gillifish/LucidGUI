@@ -1,3 +1,5 @@
+#pragma once
+
 #include <iostream>
 #include <string>
 #include <fstream>
@@ -31,6 +33,7 @@ public:
     void add(Account acc);
     void remove(Account acc);
     bool update(Account acc);
+    void clear();
     AccountData &getByTag(std::string tag);
     const std::string &filepath();
     AccountData &data();
