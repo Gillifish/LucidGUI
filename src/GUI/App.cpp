@@ -1,7 +1,9 @@
 #include "App.h"
 
-App::App(float x, float y, std::string title, float fr) : m_width(x),
-                                                          m_height(y)
+App::App(float x, float y, std::string title, float fr, DataManager &db) : m_width(x),
+                                                          m_height(y),
+                                                          m_db(db)
+
 {
     m_window.create(sf::VideoMode(m_width, m_height), title);
     m_window.setFramerateLimit(fr);
@@ -19,6 +21,12 @@ void App::sUserInput()
         {
             quit();
         }
+
+        if (event.type == sf::Event::Resized) 
+        {
+            m_width = event.size.width;
+            m_height = event.size.height;
+        }
     }
 }
 
@@ -27,7 +35,20 @@ void App::sImGui()
     ImGui::SetNextWindowSize(ImVec2(m_width, m_height)); // Set to zero to fit the entire window
     ImGui::SetNextWindowPos(ImVec2(0, 0));
 
+    mainWindow();
+}
+
+void App::mainWindow()
+{
     ImGui::Begin("Fullscreen Window", nullptr, windowFlags);
+
+    // Must be called before every element
+    ImGui::SetCursorPos(ImVec2(100, 100));
+    if (ImGui::Button("Test"))
+    {
+        std::cout << "Button clicked" << std::endl;
+    }
+
     ImGui::End();
 }
 

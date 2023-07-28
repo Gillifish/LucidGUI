@@ -26,8 +26,10 @@ int main(int argc, char *argv[])
         float WINDOW_Y = 480;
         std::string windowTitle = "Lucid++";
 
-        App gui(WINDOW_X, WINDOW_Y, windowTitle, 60);
+        App gui(WINDOW_X, WINDOW_Y, windowTitle, 60, db);
         gui.run();
+        
+        return 0;
     }
     else if ((std::strcmp(option.c_str(), "a") == 0) || (std::strcmp(option.c_str(), "add") == 0))
     {
@@ -53,4 +55,6 @@ int main(int argc, char *argv[])
     {
         std::cout << "Unknown command..." << std::endl;
     }
+
+    return 0;
 }

@@ -1,1 +1,1 @@
-./build/src/main
+./build/src/main -gui
