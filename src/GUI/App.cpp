@@ -51,7 +51,7 @@ void App::sImGui()
 
 void App::addWindow()
 {
-    ImGui::SetNextWindowSize(ImVec2(300, 150));
+    ImGui::SetNextWindowSize(ImVec2(300, 125));
 
     ImGui::Begin("Add", nullptr, m_addWindowFlags);
 
@@ -93,7 +93,7 @@ void App::addWindow()
 
 void App::removeWindow()
 {
-    ImGui::SetNextWindowSize(ImVec2(300, 150));
+    ImGui::SetNextWindowSize(ImVec2(300, 125));
 
     ImGui::Begin("Remove", nullptr, m_addWindowFlags);
 
