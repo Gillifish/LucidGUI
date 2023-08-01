@@ -20,7 +20,10 @@ class App
     sf::Color m_background = {0, 0, 0};
     bool m_running = true;
     sf::Clock deltaClock;
-    ImGuiWindowFlags windowFlags = ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoTitleBar;
+    bool m_showAddWindow = false;
+    bool m_showRemoveWindow = false;
+    ImGuiWindowFlags m_mainWindowFlags = ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoSavedSettings;
+    ImGuiWindowFlags m_addWindowFlags = ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoSavedSettings;
 
     void quit();
 
@@ -28,6 +31,9 @@ class App
     void sUserInput();
     void sImGui();
     void mainWindow();
+    void displayData();
+    void addWindow();
+    void removeWindow();
 
 public:
     App(float x, float y, std::string title, float fr, DataManager &db);
