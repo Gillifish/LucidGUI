@@ -6,14 +6,15 @@
 
 int main(int argc, char *argv[])
 {
-    std::string path = "/Users/gillifish/Desktop/db.txt";
-    DataManager db(path);
-
     if (argc != 2)
     {
         LucidControl::displayCommands();
         return 1;
     }
+
+    std::string path = "/Users/gillifish/Desktop/db.txt";
+    DataManager db(path);
+
     std::string option = argv[1];
 
     // Makes any input for the second argument lowercase
@@ -28,7 +29,7 @@ int main(int argc, char *argv[])
 
         App gui(WINDOW_X, WINDOW_Y, windowTitle, 60, db);
         gui.run();
-        
+
         return 0;
     }
     else if ((std::strcmp(option.c_str(), "a") == 0) || (std::strcmp(option.c_str(), "add") == 0))
