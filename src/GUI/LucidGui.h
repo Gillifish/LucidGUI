@@ -1,4 +1,5 @@
 #include "App.h"
+#include <DataManager.h>
 
 class LucidGui : public App
 {

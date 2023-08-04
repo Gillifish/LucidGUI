@@ -10,8 +10,6 @@
 #include <SFML/System/Clock.hpp>
 #include <SFML/Window/Event.hpp>
 
-#include <DataManager.h>
-
 class App
 {
 protected:
