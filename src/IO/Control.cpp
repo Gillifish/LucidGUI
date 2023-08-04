@@ -1,5 +1,33 @@
 #include "Control.h"
 
+void LucidControl::CLI(std::string option, DataManager &db)
+{
+    if ((std::strcmp(option.c_str(), "a") == 0) || (std::strcmp(option.c_str(), "add") == 0))
+    {
+        LucidControl::add(db);
+    }
+    else if ((std::strcmp(option.c_str(), "rm") == 0) || (std::strcmp(option.c_str(), "remove") == 0))
+    {
+        LucidControl::remove(db);
+    }
+    else if ((std::strcmp(option.c_str(), "u") == 0) || (std::strcmp(option.c_str(), "update") == 0))
+    {
+        LucidControl::update(db);
+    }
+    else if ((std::strcmp(option.c_str(), "l") == 0) || (std::strcmp(option.c_str(), "list") == 0))
+    {
+        LucidControl::list(db);
+    }
+    else if (std::strcmp(option.c_str(), "wipe") == 0)
+    {
+        LucidControl::wipe(db);
+    }
+    else
+    {
+        std::cout << "Unknown command..." << std::endl;
+    }
+}
+
 void LucidControl::displayCommands()
 {
     printf("Usage: lucid [options]\n\n");
