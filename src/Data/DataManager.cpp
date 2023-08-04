@@ -1,5 +1,26 @@
 #include "DataManager.h"
 
+DataManager::DataManager(std::string filepath) : m_filepath(filepath)
+{
+    if (std::filesystem::exists(filepath))
+    {
+        loadFromFile();
+    }
+    else
+    {
+        std::ofstream outputFile(filepath);
+        if (outputFile.is_open())
+        {
+            outputFile.close();
+            loadFromFile();
+        }
+        else
+        {
+            throw std::runtime_error("ERROR: File could not be created...");
+        }
+    }
+}
+
 void DataManager::loadFromFile()
 {
     std::fstream inputFile(m_filepath);
@@ -24,27 +45,6 @@ void DataManager::loadFromFile()
     }
 
     inputFile.close();
-}
-
-DataManager::DataManager(std::string filepath) : m_filepath(filepath)
-{
-    if (std::filesystem::exists(filepath))
-    {
-        loadFromFile();
-    }
-    else
-    {
-        std::ofstream outputFile(filepath);
-        if (outputFile.is_open())
-        {
-            outputFile.close();
-            loadFromFile();
-        }
-        else
-        {
-            throw std::runtime_error("ERROR: File could not be created...");
-        }
-    }
 }
 
 void DataManager::add(Account acc)
