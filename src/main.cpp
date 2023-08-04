@@ -2,7 +2,7 @@
 #include <algorithm>
 #include <DataManager.h>
 #include <Control.h>
-#include <App.h>
+#include <LucidGui.h>
 
 int main(int argc, char *argv[])
 {
@@ -27,7 +27,7 @@ int main(int argc, char *argv[])
         float WINDOW_Y = 480;
         std::string windowTitle = "Lucid++";
 
-        App gui(WINDOW_X, WINDOW_Y, windowTitle, 60, db);
+        LucidGui gui(WINDOW_X, WINDOW_Y, windowTitle, 60, db);
         gui.run();
 
         return 0;
