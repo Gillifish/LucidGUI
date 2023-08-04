@@ -27,7 +27,7 @@ protected:
     virtual void sImGui() = 0;
 
 public:
-    App(float x, float y, std::string title, float fr);
+    App(float x, float y, std::string title, float framerate);
     ~App();
     void run();
 

@@ -1,10 +1,10 @@
 #include "App.h"
 
-App::App(float x, float y, std::string title, float fr) : m_width(x),
+App::App(float x, float y, std::string title, float framerate) : m_width(x),
                                                           m_height(y)
 {
     m_window.create(sf::VideoMode(m_width, m_height), title);
-    m_window.setFramerateLimit(fr);
+    m_window.setFramerateLimit(framerate);
     ImGui::SFML::Init(m_window);
 }
 
