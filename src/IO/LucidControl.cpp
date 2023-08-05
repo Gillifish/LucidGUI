@@ -1,4 +1,4 @@
-#include "Control.h"
+#include "LucidControl.h"
 
 void LucidControl::CLI(std::string option, DataManager &db)
 {

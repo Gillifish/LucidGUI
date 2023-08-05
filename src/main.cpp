@@ -1,7 +1,7 @@
 #include <iostream>
 #include <algorithm>
 #include <DataManager.h>
-#include <Control.h>
+#include <LucidControl.h>
 #include <LucidGui.h>
 
 int main(int argc, char *argv[])
