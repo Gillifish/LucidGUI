@@ -9,8 +9,11 @@ class LucidGui : public App
     ImGuiWindowFlags m_mainWindowFlags = ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoSavedSettings;
     ImGuiWindowFlags m_addWindowFlags = ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoSavedSettings;
 
+    // Inherited from App
     void sImGui();
     void sDoAction(const Action &action);
+
+    // Window creation and setup
     void mainWindow();
     void addWindow();
     void removeWindow();
