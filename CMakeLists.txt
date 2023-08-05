@@ -13,6 +13,7 @@ target_include_directories(main PRIVATE src
                                         src/IO
                                         src/Data
                                         src/GUI
+                                        src/Action
 )
 
 target_link_libraries(main PRIVATE sfml-window sfml-graphics sfml-system sfml-audio ImGui-SFML::ImGui-SFML)

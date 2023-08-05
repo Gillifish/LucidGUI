@@ -4,28 +4,9 @@ LucidGui::LucidGui(float x, float y, std::string title, float fr, DataManager &d
 : App(x, y, title, fr),
     m_db(db)
 {
+    registerAction(sf::Keyboard::W, "UP");
+
     LucidGui::run();
-}
-
-void LucidGui::sUserInput()
-{
-    sf::Event event;
-    while (m_window.pollEvent(event))
-    {
-        // Careful not to input this twice
-        ImGui::SFML::ProcessEvent(event);
-
-        if (event.type == sf::Event::Closed)
-        {
-            quit();
-        }
-
-        if (event.type == sf::Event::Resized)
-        {
-            m_width = event.size.width;
-            m_height = event.size.height;
-        }
-    }
 }
 
 void LucidGui::sImGui()
@@ -199,5 +180,16 @@ void LucidGui::displayData()
         }
 
         ImGui::EndTable();
+    }
+}
+
+void LucidGui::sDoAction(const Action &action)
+{
+    if (action.type() == "START")
+    {
+        if (action.name() == "UP")
+        {
+            
+        }
     }
 }
