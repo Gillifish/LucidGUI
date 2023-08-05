@@ -127,22 +127,19 @@ void LucidGui::mainWindow()
             {
                 m_showAddWindow = true;
             }
-            else if (ImGui::MenuItem("Remove"))
-            {
-                m_showRemoveWindow = true;
-            }
 
             ImGui::EndMenu();
         }
 
-        if (ImGui::BeginMenu("Search"))
+        if (ImGui::BeginMenu("Edit"))
         {
-            static char searchBuff[128] = "";
-            ImGui::InputText("", searchBuff, IM_ARRAYSIZE(searchBuff));
-
-            if (ImGui::MenuItem("Search"))
+            if (ImGui::MenuItem("Remove"))
             {
-                searchBuff[0] = '\0';
+                m_showRemoveWindow = true;
+            }
+            else if (ImGui::MenuItem("Update"))
+            {
+
             }
 
             ImGui::EndMenu();
