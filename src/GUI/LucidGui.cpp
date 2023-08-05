@@ -4,9 +4,14 @@ LucidGui::LucidGui(float x, float y, std::string title, float fr, DataManager &d
 : App(x, y, title, fr),
     m_db(db)
 {
-    registerAction(sf::Keyboard::W, "UP");
+    actionRegistry();
 
     LucidGui::run();
+}
+
+void LucidGui::actionRegistry()
+{
+    registerAction(sf::Keyboard::W, "UP");
 }
 
 void LucidGui::sImGui()

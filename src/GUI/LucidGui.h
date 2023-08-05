@@ -13,6 +13,9 @@ class LucidGui : public App
     void sImGui();
     void sDoAction(const Action &action);
 
+    // Function for registering keyboard actions
+    void actionRegistry();
+
     // Window creation and setup
     void mainWindow();
     void addWindow();
