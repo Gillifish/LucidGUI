@@ -1,6 +1,6 @@
 #include "LucidGui.h"
 
-LucidGui::LucidGui(float x, float y, std::string title, float fr, DataManager &db)
+LucidGui::LucidGui(float x, float y, std::string title, float fr, AccountManager &db)
 : App(x, y, title, fr),
     m_db(db)
 {

@@ -1,6 +1,14 @@
 #include "LucidControl.h"
 
-void LucidControl::CLI(std::string option, DataManager &db)
+#ifdef _WIN32
+    #define OS_NAME "Windows"
+#elif __APPLE__
+    #define OS_NAME "macOS"
+#else
+    #define OS_NAME "UNKNOWN"
+#endif
+
+void LucidControl::CLI(std::string option, AccountManager &db)
 {
     if ((std::strcmp(option.c_str(), "a") == 0) || (std::strcmp(option.c_str(), "add") == 0))
     {
@@ -39,7 +47,7 @@ void LucidControl::displayCommands()
     printf("l  | list    Lists all accounts\n");
 }
 
-void LucidControl::add(DataManager &db)
+void LucidControl::add(AccountManager &db)
 {
     Account acc;
 
@@ -55,7 +63,7 @@ void LucidControl::add(DataManager &db)
     db.add(acc);
 }
 
-void LucidControl::remove(DataManager &db)
+void LucidControl::remove(AccountManager &db)
 {
     Account acc;
 
@@ -68,17 +76,18 @@ void LucidControl::remove(DataManager &db)
     if (db.remove(acc))
     {
         printf("Account successfully removed...");
-    } else
+    }
+    else
     {
         printf("Account does not exist...");
     }
 }
 
-void LucidControl::update(DataManager &db)
+void LucidControl::update(AccountManager &db)
 {
 }
 
-void LucidControl::list(DataManager &db)
+void LucidControl::list(AccountManager &db)
 {
     for (auto acc : db.data())
     {
@@ -87,7 +96,57 @@ void LucidControl::list(DataManager &db)
     }
 }
 
-void LucidControl::wipe(DataManager &db)
+void LucidControl::wipe(AccountManager &db)
 {
     db.clear();
+}
+
+void LucidControl::setup()
+{
+    if (std::strcmp(OS_NAME, "Windows"))
+    {
+        windowsSetup();
+    }
+    else if (std::strcmp(OS_NAME, "macOS"))
+    {
+        macSetup();
+    }
+}
+
+void LucidControl::windowsSetup()
+{
+
+}
+
+void LucidControl::macSetup()
+{
+
+}
+
+bool LucidControl::checkForConfig()
+{
+    if (std::strcmp(OS_NAME, "Windows"))
+    {
+        return checkForWindowsConfig();
+    }
+    else if (std::strcmp(OS_NAME, "macOS"))
+    {
+        return checkForMacConfig();
+    }
+    else
+    {
+        throw std::runtime_error("Unknown Operating System");
+    }
+}
+
+bool LucidControl::checkForWindowsConfig()
+{
+    return false;
+}
+
+bool LucidControl::checkForMacConfig()
+{
+    std::string homePath = getenv("HOME");
+
+    return false;
 }

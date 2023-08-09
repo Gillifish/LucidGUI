@@ -1,16 +1,25 @@
 #pragma once
 
 #include <iostream>
-#include <DataManager.h>
+#include <AccountManager.h>
+#include <DataManagerBase.h>
 
 class LucidControl
-{
+{   
+    static void windowsSetup();
+    static void macSetup();
+
+    static bool checkForWindowsConfig();
+    static bool checkForMacConfig();
 public:
-    static void CLI(std::string option, DataManager &db);
+    static void CLI(std::string option, AccountManager &db);
     static void displayCommands();
-    static void add(DataManager &db);
-    static void remove(DataManager &db);
-    static void update(DataManager &db);
-    static void list(DataManager &db);
-    static void wipe(DataManager &db);
+    static void add(AccountManager &db);
+    static void remove(AccountManager &db);
+    static void update(AccountManager &db);
+    static void list(AccountManager &db);
+    static void wipe(AccountManager &db);
+
+    static void setup();
+    static bool checkForConfig();
 };

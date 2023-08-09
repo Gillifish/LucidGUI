@@ -1,8 +1,11 @@
 #include <iostream>
 #include <algorithm>
-#include <DataManager.h>
+#include <filesystem>
+
+#include <AccountManager.h>
 #include <LucidControl.h>
 #include <LucidGui.h>
+#include <LucidConfigGui.h>
 
 int main(int argc, char *argv[])
 {
@@ -13,7 +16,7 @@ int main(int argc, char *argv[])
     }
 
     std::string path = "/Users/gillifish/Desktop/db.txt";
-    DataManager db(path);
+    AccountManager db(path);
 
     std::string option = argv[1];
 
@@ -28,6 +31,18 @@ int main(int argc, char *argv[])
         std::string windowTitle = "Lucid++";
 
         LucidGui gui(WINDOW_X, WINDOW_Y, windowTitle, 60, db);
+        gui.run();
+
+        return 0;
+    }
+
+    if (std::strcmp(option.c_str(), "-config") == 0)
+    {
+        float WINDOW_X = 640;
+        float WINDOW_Y = 480;
+        std::string windowTitle = "Lucid++ Config";
+
+        LucidConfigGui gui(WINDOW_X, WINDOW_Y, windowTitle, 60);
         gui.run();
 
         return 0;

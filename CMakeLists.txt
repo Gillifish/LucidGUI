@@ -10,8 +10,8 @@ add_subdirectory(src)
 add_subdirectory(dependencies)
 
 target_include_directories(main PRIVATE src
-                                        src/IO
                                         src/Data
+                                        src/IO
                                         src/GUI
                                         src/Action
 )

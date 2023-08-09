@@ -1,9 +1,11 @@
+#pragma once
+
 #include "App.h"
-#include <DataManager.h>
+#include <AccountManager.h>
 
 class LucidGui : public App
 {
-    DataManager &m_db;
+    AccountManager &m_db;
     bool m_showAddWindow = false;
     bool m_showRemoveWindow = false;
     ImGuiWindowFlags m_mainWindowFlags = ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoSavedSettings;
@@ -23,5 +25,5 @@ class LucidGui : public App
     void displayData();
 
 public:
-    LucidGui(float x, float y, std::string title, float fr, DataManager &db);
+    LucidGui(float x, float y, std::string title, float fr, AccountManager &db);
 };
