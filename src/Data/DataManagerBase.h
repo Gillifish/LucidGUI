@@ -21,19 +21,44 @@ protected:
     virtual void saveToFile() = 0;
 
 public:
+    virtual bool removeif(T &entry, T &data) = 0;
+    virtual bool update(T &data) = 0;
+
     DataManagerBase(std::string filepath) : m_filepath(filepath)
     {
     }
 
-    void add(T data)
+    void add(T &data)
     {
         m_data.push_back(data);
         m_size++;
         saveToFile();
     }
 
-    virtual bool remove(T data) = 0;
-    virtual bool update(T data) = 0;
+    bool remove(T &data)
+    {
+        bool removed = false;
+
+        m_data.erase(
+            std::remove_if(m_data.begin(), m_data.end(),
+                           [&](T &a)
+                           {
+                               bool result = removeif(a, data);
+                               removed = result;
+                               return result;
+                           }),
+            m_data.end());
+
+        if (removed)
+        {
+            saveToFile();
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
 
     void clear()
     {

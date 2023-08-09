@@ -31,30 +31,10 @@ void AccountManager::loadFromFile()
     inputFile.close();
 }
 
-bool AccountManager::remove(Account data)
+bool AccountManager::removeif(Account &entry, Account &data)
 {
-    bool removed = false;
-
-    m_data.erase(
-        std::remove_if(m_data.begin(), m_data.end(),
-                       [&](Account &a)
-                       {
-                           if (a.tag == data.tag && a.username == data.username)
-                           {
-                               m_size--;
-                               removed = true;
-                               return true;
-                           }
-                           else
-                           {
-                               return false;
-                           }
-                       }),
-        m_data.end());
-
-    if (removed)
+    if (entry.tag == data.tag && entry.username == data.username && entry.password == data.password)
     {
-        saveToFile();
         return true;
     }
     else
@@ -63,7 +43,7 @@ bool AccountManager::remove(Account data)
     }
 }
 
-bool AccountManager::update(Account data)
+bool AccountManager::update(Account &data)
 {
     return true;
 }

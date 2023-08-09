@@ -25,6 +25,8 @@ class AccountManager : public DataManagerBase<Account>
 public:
     AccountManager(std::string filepath);
     
-    bool remove(Account data);
-    bool update(Account data);
+    // Handles the removal logic of the base classes remove function
+    // Should return true if the data given to the function matches what you have specified
+    bool removeif(Account &entry, Account &data);
+    bool update(Account &data);
 };
