@@ -1,6 +1,6 @@
-#include "ConfigManager.h"
+#include "LucidConfig.h"
 
-ConfigManager::ConfigManager()
+LucidConfig::LucidConfig()
 {
     if (std::filesystem::exists(m_filepath))
     {
@@ -12,7 +12,7 @@ ConfigManager::ConfigManager()
     }
 }
 
-void ConfigManager::loadFromFile()
+void LucidConfig::loadFromFile()
 {
     std::fstream inputFile(m_filepath + "/LucidConfig.txt");
     if (!inputFile)
@@ -33,7 +33,7 @@ void ConfigManager::loadFromFile()
     inputFile.close();
 }
 
-void ConfigManager::configSetup()
+void LucidConfig::configSetup()
 {
     std::filesystem::create_directory(m_defaultDir + "/Lucid");
 
@@ -54,7 +54,7 @@ void ConfigManager::configSetup()
     }
 }
 
-void ConfigManager::saveToFile()
+void LucidConfig::saveToFile()
 {
     std::ofstream outputFile(m_filepath, std::ofstream::out);
 
@@ -63,12 +63,12 @@ void ConfigManager::saveToFile()
     outputFile.close();
 }
 
-void ConfigManager::setConfig(Config &config)
+void LucidConfig::setConfig(Config &config)
 {
     m_config = config;
 }
 
-Config &ConfigManager::getConfig()
+Config &LucidConfig::getConfig()
 {
     return m_config;
 }

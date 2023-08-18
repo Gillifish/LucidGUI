@@ -13,7 +13,7 @@ struct Config
     bool setup;
 };
 
-class ConfigManager
+class LucidConfig
 {
 #ifdef __APPLE__
     const std::string m_defaultDir = getenv("HOME");
@@ -30,7 +30,7 @@ class ConfigManager
     void configSetup();
 
 public:
-    ConfigManager();
+    LucidConfig();
 
     void saveToFile();
     void setConfig(Config &config);

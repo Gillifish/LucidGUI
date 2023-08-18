@@ -2,7 +2,7 @@
 #include <algorithm>
 
 #include <AccountManager.h>
-#include <ConfigManager.h>
+#include <LucidConfig.h>
 #include <LucidControl.h>
 #include <LucidGui.h>
 #include <LucidConfigGui.h>
@@ -11,7 +11,7 @@ int main(int argc, char *argv[])
 {
     std::string macDefaultHomePath = getenv("HOME");
 
-    ConfigManager config;
+    LucidConfig config;
 
     if (argc != 2)
     {
