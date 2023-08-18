@@ -4,6 +4,8 @@
 #include <App.h>
 #include <AccountManager.h>
 
+// WIP
+
 class LucidConfigGui : public App
 {
     // Function for registering keyboard actions

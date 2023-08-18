@@ -1,5 +1,6 @@
 #include "App.h"
 
+// Constructor that takes in two floats for desired window height, a string for title, and float for framerate
 App::App(float x, float y, std::string title, float framerate) : m_width(x),
                                                           m_height(y)
 {
@@ -8,6 +9,7 @@ App::App(float x, float y, std::string title, float framerate) : m_width(x),
     ImGui::SFML::Init(m_window);
 }
 
+// Update function that is ran every frame
 void App::update()
 {
     sUserInput();
@@ -17,6 +19,7 @@ void App::update()
     sImGui();
 }
 
+// Handles all user actions which are defined in the ActionMap
 void App::sUserInput()
 {
     sf::Event event;
@@ -50,6 +53,7 @@ void App::sUserInput()
     }
 }
 
+// Main update loop for window
 void App::run()
 {
     while (isRunning())
@@ -61,31 +65,37 @@ void App::run()
     }
 }
 
+// Quits the app
 void App::quit()
 {
     m_running = false;
 }
 
+// Returns the window object
 sf::RenderWindow &App::window()
 {
     return m_window;
 }
 
+// Returns if the window is open or the m_running variable is true
 bool App::isRunning()
 {
     return m_running & m_window.isOpen();
 }
 
+// Deconstructor for cleanup
 App::~App()
 {
     ImGui::SFML::Shutdown();
 }
 
+// Function for registering window actions
 void App::registerAction(int inputKey, const std::string &actionName)
 {
     m_actionMap[inputKey] = actionName;
 }
 
+// Returns the ActionMap
 const ActionMap &App::getActionMap() const
 {
     return m_actionMap;

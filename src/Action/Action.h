@@ -2,6 +2,8 @@
 
 #include <iostream>
 
+// Defines actions for the windows to react to keyboard/mouse input
+
 class Action
 {
     std::string m_name = "NONE";

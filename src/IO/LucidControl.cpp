@@ -8,6 +8,8 @@
     #define OS_NAME "UNKNOWN"
 #endif
 
+// Routes to Lucid actions according to the command given
+
 void LucidControl::CLI(std::string option, AccountManager &db)
 {
     if ((std::strcmp(option.c_str(), "a") == 0) || (std::strcmp(option.c_str(), "add") == 0))
@@ -36,6 +38,8 @@ void LucidControl::CLI(std::string option, AccountManager &db)
     }
 }
 
+// Displays all options
+
 void LucidControl::displayCommands()
 {
     printf("Usage: lucid [options]\n\n");
@@ -46,6 +50,8 @@ void LucidControl::displayCommands()
     printf("u  | update  Updates an account\n");
     printf("l  | list    Lists all accounts\n");
 }
+
+// Adds account to account list
 
 void LucidControl::add(AccountManager &db)
 {
@@ -62,6 +68,8 @@ void LucidControl::add(AccountManager &db)
 
     db.add(acc);
 }
+
+// Removes account from account list
 
 void LucidControl::remove(AccountManager &db)
 {
@@ -83,9 +91,13 @@ void LucidControl::remove(AccountManager &db)
     }
 }
 
+// Updates account from account list
+
 void LucidControl::update(AccountManager &db)
 {
 }
+
+// Lists all accounts to terminal
 
 void LucidControl::list(AccountManager &db)
 {
@@ -96,57 +108,9 @@ void LucidControl::list(AccountManager &db)
     }
 }
 
+// Wipes all accounts from the database
+
 void LucidControl::wipe(AccountManager &db)
 {
     db.clear();
-}
-
-void LucidControl::setup()
-{
-    if (std::strcmp(OS_NAME, "Windows"))
-    {
-        windowsSetup();
-    }
-    else if (std::strcmp(OS_NAME, "macOS"))
-    {
-        macSetup();
-    }
-}
-
-void LucidControl::windowsSetup()
-{
-
-}
-
-void LucidControl::macSetup()
-{
-
-}
-
-bool LucidControl::checkForConfig()
-{
-    if (std::strcmp(OS_NAME, "Windows"))
-    {
-        return checkForWindowsConfig();
-    }
-    else if (std::strcmp(OS_NAME, "macOS"))
-    {
-        return checkForMacConfig();
-    }
-    else
-    {
-        throw std::runtime_error("Unknown Operating System");
-    }
-}
-
-bool LucidControl::checkForWindowsConfig()
-{
-    return false;
-}
-
-bool LucidControl::checkForMacConfig()
-{
-    std::string homePath = getenv("HOME");
-
-    return false;
 }

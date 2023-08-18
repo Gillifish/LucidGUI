@@ -4,13 +4,10 @@
 #include <AccountManager.h>
 #include <DataManagerBase.h>
 
+// Manages all of the CLI interactions for Lucid
+
 class LucidControl
 {   
-    static void windowsSetup();
-    static void macSetup();
-
-    static bool checkForWindowsConfig();
-    static bool checkForMacConfig();
 public:
     static void CLI(std::string option, AccountManager &db);
     static void displayCommands();
@@ -19,7 +16,4 @@ public:
     static void update(AccountManager &db);
     static void list(AccountManager &db);
     static void wipe(AccountManager &db);
-
-    static void setup();
-    static bool checkForConfig();
 };

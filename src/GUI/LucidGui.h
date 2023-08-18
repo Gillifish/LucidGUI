@@ -3,6 +3,7 @@
 #include "App.h"
 #include <AccountManager.h>
 
+// Class for the GUI component of Lucid
 class LucidGui : public App
 {
     AccountManager &m_db;

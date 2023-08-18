@@ -1,5 +1,7 @@
 #include "LucidGui.h"
 
+// Contructor which takes two floats x and y for the dimensions of the window, string for title, float for framerate and
+//      a reference to the AccountManager database
 LucidGui::LucidGui(float x, float y, std::string title, float fr, AccountManager &db)
 : App(x, y, title, fr),
     m_db(db)
@@ -9,11 +11,13 @@ LucidGui::LucidGui(float x, float y, std::string title, float fr, AccountManager
     LucidGui::run();
 }
 
+// Function for registering keyboard actions to the window
 void LucidGui::actionRegistry()
 {
     registerAction(sf::Keyboard::W, "UP");
 }
 
+// Function for setting up all ImGui GUI components
 void LucidGui::sImGui()
 {
     ImGui::SetNextWindowSize(ImVec2(m_width, m_height)); // Set to zero to fit the entire window
@@ -32,6 +36,7 @@ void LucidGui::sImGui()
     }
 }
 
+// ImGui window for adding accounts to the DB
 void LucidGui::addWindow()
 {
     ImGui::SetNextWindowSize(ImVec2(300, 125));
@@ -74,6 +79,7 @@ void LucidGui::addWindow()
     ImGui::End();
 }
 
+// ImGui window for removing accounts from the DB
 void LucidGui::removeWindow()
 {
     ImGui::SetNextWindowSize(ImVec2(300, 125));
@@ -116,6 +122,7 @@ void LucidGui::removeWindow()
     ImGui::End();
 }
 
+// ImGui window for showing all data in the DB
 void LucidGui::mainWindow()
 {
     if (ImGui::BeginMainMenuBar())
@@ -160,6 +167,7 @@ void LucidGui::mainWindow()
     ImGui::End();
 }
 
+// ImGui code for setting up table for displaying data
 void LucidGui::displayData()
 {
     if (ImGui::BeginTable("Data", 3, ImGuiTableFlags_Resizable | ImGuiTableFlags_NoSavedSettings | ImGuiTableFlags_Borders))
@@ -185,6 +193,7 @@ void LucidGui::displayData()
     }
 }
 
+// Function for handling actions on the ActionMap
 void LucidGui::sDoAction(const Action &action)
 {
     if (action.type() == "START")

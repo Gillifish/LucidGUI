@@ -13,6 +13,8 @@
 
 #include <Action.h>
 
+// Abstract class that defines and sets up an imgui window using the SFML library
+
 typedef std::map<int, std::string> ActionMap;
 
 class App
