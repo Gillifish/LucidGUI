@@ -37,7 +37,7 @@ void LucidConfig::configSetup()
 {
     std::filesystem::create_directory(m_defaultDir + "/Lucid");
 
-    std::ofstream createConfig(m_filepath + "/LucidConfig.txt");
+    std::ofstream createConfig(m_configpath);
 
     if (createConfig.is_open())
     {
@@ -46,7 +46,7 @@ void LucidConfig::configSetup()
         createConfig.close();
     }
 
-    std::ofstream createDB(m_filepath + "/LucidDB.txt");
+    std::ofstream createDB(m_dbpath);
 
     if (createDB.is_open())
     {
