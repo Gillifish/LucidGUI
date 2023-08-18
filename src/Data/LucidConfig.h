@@ -13,6 +13,8 @@ struct Config
     bool setup;
 };
 
+// I'm not gonna lie, this code isn't great but at least it works ya know?
+
 class LucidConfig
 {
 #ifdef __APPLE__
