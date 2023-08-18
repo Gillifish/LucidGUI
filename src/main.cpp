@@ -2,19 +2,24 @@
 #include <algorithm>
 
 #include <AccountManager.h>
+#include <ConfigManager.h>
 #include <LucidControl.h>
 #include <LucidGui.h>
 #include <LucidConfigGui.h>
 
 int main(int argc, char *argv[])
 {
+    std::string macDefaultHomePath = getenv("HOME");
+
+    ConfigManager config;
+
     if (argc != 2)
     {
         LucidControl::displayCommands();
         return 1;
     }
 
-    std::string path = "/Users/gillifish/Desktop/db.txt";
+    std::string path = "/Users/gillifish/Lucid/LucidDB.txt";
     AccountManager db(path);
 
     std::string option = argv[1];
