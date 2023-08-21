@@ -7,6 +7,8 @@
 #include <LucidGui.h>
 #include <LucidConfigGui.h>
 
+const std::string LUCIDVERSION = "0.8";
+
 int main(int argc, char *argv[])
 {
     std::string macDefaultHomePath = getenv("HOME");

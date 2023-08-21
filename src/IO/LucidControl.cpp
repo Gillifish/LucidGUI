@@ -30,7 +30,15 @@ void LucidControl::CLI(std::string option, AccountManager &db)
     }
     else if (std::strcmp(option.c_str(), "wipe") == 0)
     {
-        LucidControl::wipe(db);
+        // LucidControl::wipe(db);
+    }
+    else if (std::strcmp(option.c_str(), "about") == 0)
+    {
+
+    }
+    else if (std::strcmp(option.c_str(), "version") == 0 || (std::strcmp(option.c_str(), "v") == 0))
+    {
+        LucidControl::version();
     }
     else
     {
@@ -49,6 +57,20 @@ void LucidControl::displayCommands()
     printf("rm | remove  Removes an account\n");
     printf("u  | update  Updates an account\n");
     printf("l  | list    Lists all accounts\n");
+    printf("about        Displays general information about the app\n");
+    printf("version | v  Displays the current Lucid Version\n");
+}
+
+void LucidControl::displayAbout()
+{
+    
+}
+
+// Displays the current Lucid version shown in Globals.h
+
+void LucidControl::version()
+{
+    printf("Lucid Version: %.1f\n", LucidGlobals::VERSION);
 }
 
 // Adds account to account list
