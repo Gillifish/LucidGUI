@@ -43,9 +43,9 @@ void LucidGui::addWindow()
 
     ImGui::Begin("Add", nullptr, m_addWindowFlags);
 
-    static char accName[16] = "";
-    static char username[16] = "";
-    static char password[16] = "";
+    static char accName[25] = "";
+    static char username[25] = "";
+    static char password[25] = "";
 
     ImGui::InputText("Account Name", accName, IM_ARRAYSIZE(accName));
     ImGui::InputText("Username", username, IM_ARRAYSIZE(username));
@@ -86,9 +86,9 @@ void LucidGui::removeWindow()
 
     ImGui::Begin("Remove", nullptr, m_addWindowFlags);
 
-    static char accName[16] = "";
-    static char username[16] = "";
-    static char password[16] = "";
+    static char accName[25] = "";
+    static char username[25] = "";
+    static char password[25] = "";
 
     ImGui::InputText("Account Name", accName, IM_ARRAYSIZE(accName));
     ImGui::InputText("Username", username, IM_ARRAYSIZE(username));
