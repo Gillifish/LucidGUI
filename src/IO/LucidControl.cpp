@@ -40,6 +40,10 @@ void LucidControl::CLI(std::string option, AccountManager &db)
     {
         LucidControl::version();
     }
+    else if (std::strcmp(option.c_str(), "usage") == 0)
+    {
+        LucidControl::displayCommands();
+    }
     else
     {
         std::cout << "Unknown command..." << std::endl;
