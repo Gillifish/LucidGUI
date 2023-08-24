@@ -7,13 +7,38 @@
 #include <LucidGui.h>
 #include <LucidConfigGui.h>
 
+#ifdef _WIN32
+    #define OS_NAME "Windows"
+#elif __APPLE__
+    #define OS_NAME "macOS"
+#else
+    #define OS_NAME "UNKNOWN"
+#endif
+
 int main(int argc, char *argv[])
 {
-    //std::string macDefaultHomePath = getenv("HOME");
-
     LucidConfig config;
 
-    std::string path = "/Users/gillifish/Lucid/LucidDB.txt";
+    std::string path;
+
+    // std::string path = "/Users/gillifish/Lucid/LucidDB.txt";
+    if (std::strcmp(OS_NAME, "macOS") == 0)
+    {
+        std::string macDefaultHomePath = getenv("HOME");
+        path = macDefaultHomePath + "/Lucid/LucidDB.txt";
+    }
+    else if (std::strcmp(OS_NAME, "Windows") == 0)
+    {
+        std::string windowsDefaultPath = "";
+        path = windowsDefaultPath + "/Lucid/LucidDB.txt";
+    }
+    else
+    {
+        printf("Unknown operating system...\n");
+
+        return 1;
+    }
+
     AccountManager db(path);
 
     if (argc == 1)
