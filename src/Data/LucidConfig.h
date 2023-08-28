@@ -26,7 +26,7 @@ class LucidConfig
 #endif
 
     std::string m_filepath = m_defaultDir + "/Lucid";
-    std::string m_dbpath = m_filepath + "/LucidDB.txt";
+    std::string m_dbpath = m_filepath + "/LucidDB.json";
     std::string m_configpath = m_filepath + "/LucidConfig.txt";
     Config m_config;
 
