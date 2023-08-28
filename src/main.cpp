@@ -25,12 +25,12 @@ int main(int argc, char *argv[])
     if (std::strcmp(OS_NAME, "macOS") == 0)
     {
         std::string macDefaultHomePath = getenv("HOME");
-        path = macDefaultHomePath + "/Lucid/LucidDB.txt";
+        path = macDefaultHomePath + "/Lucid/LucidDB.json";
     }
     else if (std::strcmp(OS_NAME, "Windows") == 0)
     {
         std::string windowsDefaultPath = "";
-        path = windowsDefaultPath + "/Lucid/LucidDB.txt";
+        path = windowsDefaultPath + "/Lucid/LucidDB.json";
     }
     else
     {

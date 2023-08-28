@@ -1,5 +1,19 @@
 #include "AccountManager.h"
 
+// to_json overload for Account struct
+void to_json(json &j, const Account &acc)
+{
+    j = json{{"AccountName", acc.tag}, {"Username", acc.username}, {"Password", acc.password}};
+}
+
+// from_json overload for the Account struct
+void from_json(const json &j, Account &acc)
+{
+    j.at("AccountName").get_to(acc.tag);
+    j.at("Username").get_to(acc.username);
+    j.at("Password").get_to(acc.password);
+}
+
 AccountManager::AccountManager(std::string filepath) : DataManagerBase<Account>(filepath)
 {
     loadFromFile();
@@ -13,15 +27,14 @@ void AccountManager::loadFromFile()
         throw std::runtime_error("Failed to open file...");
     }
 
-    std::string line;
+    json jsonData = json::parse(inputFile);
 
-    while (std::getline(inputFile, line))
+    for (auto data : jsonData)
     {
-        std::istringstream iss(line);
         Account acc;
-        iss >> acc.tag;
-        iss >> acc.username;
-        iss >> acc.password;
+        acc.tag = data["AccountName"];
+        acc.username = data["Username"];
+        acc.password = data["Password"];
 
         m_data.push_back(acc);
         m_map[acc.tag].push_back(acc);
@@ -50,12 +63,16 @@ bool AccountManager::update(Account &data)
 
 void AccountManager::saveToFile()
 {
-    std::ofstream outputFile(m_filepath, std::ofstream::out);
+    std::ofstream outputFile(m_filepath);
 
-    for (auto acc : m_data)
+    json j;
+
+    for (auto data : m_data)
     {
-        outputFile << acc.tag << " " << acc.username << " " << acc.password << std::endl;
+        j.push_back(data);
     }
+
+    outputFile << std::setw(4) << j << std::endl;
 
     outputFile.close();
 }

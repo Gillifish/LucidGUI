@@ -8,7 +8,11 @@
 #include <map>
 #include <sstream>
 
+#include "json.hpp"
+
 #include "DataManagerBase.h"
+
+using json = nlohmann::json;
 
 struct Account
 {

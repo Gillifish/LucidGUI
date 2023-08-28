@@ -8,6 +8,8 @@
 #include <map>
 #include <sstream>
 
+#include "json.hpp"
+
 // Abstract template base class for managing different types of data. Probably a little overengineered/not needed but I
 //      wanted to try out some C++ generics/inheritance.
 template <typename T>
