@@ -11,7 +11,6 @@ add_subdirectory(dependencies)
 
 target_include_directories(main PRIVATE src
                                         src/Data
-                                        src/IO
                                         src/GUI
                                         src/Action
                                         src/Globals
