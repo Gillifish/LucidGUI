@@ -3,8 +3,8 @@
 // Contructor which takes two floats x and y for the dimensions of the window, string for title, float for framerate and
 //      a reference to the AccountManager database
 LucidGui::LucidGui(float x, float y, std::string title, float fr, AccountManager &db)
-: App(x, y, title, fr),
-    m_db(db)
+    : App(x, y, title, fr),
+      m_db(db)
 {
     actionRegistry();
 
@@ -146,7 +146,6 @@ void LucidGui::mainWindow()
             }
             else if (ImGui::MenuItem("Update"))
             {
-
             }
 
             ImGui::EndMenu();
@@ -186,7 +185,10 @@ void LucidGui::displayData()
             ImGui::Text("%s", acc.username.c_str());
 
             ImGui::TableNextColumn();
-            ImGui::Text("%s", acc.password.c_str());
+            if (ImGui::Selectable(acc.password.c_str()))
+            {
+                ImGui::SetClipboardText(acc.password.c_str());
+            }
         }
 
         ImGui::EndTable();
@@ -200,7 +202,6 @@ void LucidGui::sDoAction(const Action &action)
     {
         if (action.name() == "UP")
         {
-            
         }
     }
 }
