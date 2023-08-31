@@ -169,7 +169,7 @@ void LucidGui::mainWindow()
 // ImGui code for setting up table for displaying data
 void LucidGui::displayData()
 {
-    if (ImGui::BeginTable("Data", 3, ImGuiTableFlags_Resizable | ImGuiTableFlags_NoSavedSettings | ImGuiTableFlags_Borders))
+    if (ImGui::BeginTable("Data", 3, m_tableFlags))
     {
         ImGui::TableSetupColumn("Account Name");
         ImGui::TableSetupColumn("User");
