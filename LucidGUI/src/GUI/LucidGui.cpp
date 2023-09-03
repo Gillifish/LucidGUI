@@ -129,31 +129,24 @@ void LucidGui::removeWindow()
 
 void LucidGui::updateWindow()
 {
-    ImGui::SetNextWindowSize(ImVec2(300, 125));
+    ImGui::SetNextWindowSize(ImVec2(300, 80));
 
-    ImGui::Begin("Update", nullptr, m_addWindowFlags);
+    ImGui::Begin("Update Password", nullptr, m_addWindowFlags);
 
-    static char accNameUpdate[25] = "";
-    static char usernameUpdate[25] = "";
     static char passwordUpdate[25] = "";
 
-    ImGui::InputText("Account Name", accNameUpdate, IM_ARRAYSIZE(accNameUpdate));
-    ImGui::InputText("Username", usernameUpdate, IM_ARRAYSIZE(usernameUpdate));
     ImGui::InputText("Password", passwordUpdate, IM_ARRAYSIZE(passwordUpdate));
 
     if (ImGui::Button("Update"))
     {
-        // m_selectedToUpdate->tag = accNameUpdate;
-        // m_selectedToUpdate->username = usernameUpdate;
-        // m_selectedToUpdate->password = passwordUpdate;
+        m_selectedToUpdate->password = passwordUpdate;
+        m_db.saveToFile();
     }
 
     ImGui::SameLine();
 
     if (ImGui::Button("Cancel"))
     {
-        accNameUpdate[0] = '\0';
-        usernameUpdate[0] = '\0';
         passwordUpdate[0] = '\0';
 
         m_showUpdateWindow = false;

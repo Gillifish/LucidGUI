@@ -2,7 +2,6 @@
 
 #include <iostream>
 #include <AccountManager.h>
-#include <DataManagerBase.h>
 #include <Globals.h>
 
 // Manages all of the CLI interactions for Lucid

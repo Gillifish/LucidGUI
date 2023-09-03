@@ -1,7 +1,7 @@
 #pragma once
 
 #include "App.h"
-#include <AccountManager.h>
+#include "Data/AccountManager.h"
 
 // Class for the GUI component of Lucid
 class LucidGui : public App

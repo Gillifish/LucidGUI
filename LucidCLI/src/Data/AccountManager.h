@@ -10,27 +10,37 @@
 
 #include "json.hpp"
 
-#include "DataManagerBase.h"
-
 using json = nlohmann::json;
 
 struct Account
 {
+    int index;
     std::string tag;
     std::string username;
     std::string password;
 };
 
-class AccountManager : public DataManagerBase<Account>
+class AccountManager
 {
+    std::vector<Account> m_data;
+    std::map<std::string, std::vector<Account>> m_map;
+    const std::string m_filepath;
+    int m_size = 0;
+
     void loadFromFile();
-    void saveToFile();
+    void resetIndex();
 
 public:
     AccountManager(std::string filepath);
-    
-    // Handles the removal logic of the base classes remove function
-    // Should return true if the data given to the function matches what you have specified
-    bool removeif(Account &entry, Account &data);
-    bool update(Account &data);
+
+    void add(Account &acc);
+    bool remove(Account &acc);
+    void clear();
+    void saveToFile();
+    std::vector<Account> &getByTag(std::string tag);
+    Account &getByIndex(int index);
+    std::vector<Account>& data();
+    // Returns the filepath
+    const std::string &filepath();
+    int size();
 };
