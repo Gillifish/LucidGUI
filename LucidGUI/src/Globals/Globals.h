@@ -5,5 +5,5 @@
 class LucidGlobals
 {
 public:
-    constexpr static float VERSION = 0.8f;
+    constexpr static float VERSION = 1.0f;
 };
