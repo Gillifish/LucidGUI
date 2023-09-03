@@ -34,6 +34,11 @@ void LucidGui::sImGui()
     {
         removeWindow();
     }
+
+    if (m_showUpdateWindow)
+    {
+        updateWindow();
+    }
 }
 
 // ImGui window for adding accounts to the DB
@@ -122,6 +127,41 @@ void LucidGui::removeWindow()
     ImGui::End();
 }
 
+void LucidGui::updateWindow()
+{
+    ImGui::SetNextWindowSize(ImVec2(300, 125));
+
+    ImGui::Begin("Update", nullptr, m_addWindowFlags);
+
+    static char accNameUpdate[25] = "";
+    static char usernameUpdate[25] = "";
+    static char passwordUpdate[25] = "";
+
+    ImGui::InputText("Account Name", accNameUpdate, IM_ARRAYSIZE(accNameUpdate));
+    ImGui::InputText("Username", usernameUpdate, IM_ARRAYSIZE(usernameUpdate));
+    ImGui::InputText("Password", passwordUpdate, IM_ARRAYSIZE(passwordUpdate));
+
+    if (ImGui::Button("Update"))
+    {
+        // m_selectedToUpdate->tag = accNameUpdate;
+        // m_selectedToUpdate->username = usernameUpdate;
+        // m_selectedToUpdate->password = passwordUpdate;
+    }
+
+    ImGui::SameLine();
+
+    if (ImGui::Button("Cancel"))
+    {
+        accNameUpdate[0] = '\0';
+        usernameUpdate[0] = '\0';
+        passwordUpdate[0] = '\0';
+
+        m_showUpdateWindow = false;
+    }
+
+    ImGui::End();
+}
+
 // ImGui window for showing all data in the DB
 void LucidGui::mainWindow()
 {
@@ -176,13 +216,27 @@ void LucidGui::displayData()
         ImGui::TableSetupColumn("Password");
         ImGui::TableHeadersRow();
 
-        for (auto acc : m_db.data())
+        for (auto& acc : m_db.data())
         {
             ImGui::TableNextColumn();
-            ImGui::Text("%s", acc.tag.c_str());
+            if (ImGui::Selectable(acc.tag.c_str()))
+            {
+                m_selectedToUpdate = &acc;
+                if (m_showUpdateWindow)
+                {
+                    m_showUpdateWindow = false;
+                } 
+                else
+                {
+                    m_showUpdateWindow = true;
+                }
+            }
 
             ImGui::TableNextColumn();
-            ImGui::Text("%s", acc.username.c_str());
+            if (ImGui::Selectable(acc.username.c_str()))
+            {
+                ImGui::SetClipboardText(acc.username.c_str());
+            }
 
             ImGui::TableNextColumn();
             if (ImGui::Selectable(acc.password.c_str()))

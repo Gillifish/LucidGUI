@@ -7,8 +7,12 @@
 class LucidGui : public App
 {
     AccountManager &m_db;
+
+    Account* m_selectedToUpdate;
+
     bool m_showAddWindow = false;
     bool m_showRemoveWindow = false;
+    bool m_showUpdateWindow = false;
     ImGuiWindowFlags m_mainWindowFlags = ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoSavedSettings;
     ImGuiWindowFlags m_addWindowFlags = ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoSavedSettings;
     ImGuiTableFlags m_tableFlags = ImGuiTableFlags_Resizable | ImGuiTableFlags_NoSavedSettings | ImGuiTableFlags_Borders;
@@ -24,6 +28,7 @@ class LucidGui : public App
     void mainWindow();
     void addWindow();
     void removeWindow();
+    void updateWindow();
     void displayData();
 
 public:
