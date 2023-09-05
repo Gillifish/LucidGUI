@@ -156,3 +156,32 @@ int AccountManager::size()
 {
     return m_size;
 }
+
+void AccountManager::createBackup()
+{
+    std::time_t currentTime = std::time(nullptr);
+
+    // Convert the current time to a std::tm structure
+    std::tm* timeInfo = std::localtime(&currentTime);
+
+    std::string month = std::to_string(timeInfo->tm_mon + 1);
+    std::string day = std::to_string(timeInfo->tm_mday);
+    std::string hour = std::to_string(timeInfo->tm_hour);
+    std::string minute = std::to_string(timeInfo->tm_min);
+    std::string second = std::to_string(timeInfo-> tm_sec);
+
+    std::string outStr = month + "-" + day + "-" + hour + "-" + minute + "-" + second + ".json";
+
+    std::ofstream outputFile("/Users/gillifish/Lucid/Backups/" + outStr);
+
+    json j;
+
+    for (auto data : m_data)
+    {
+        j.push_back(data);
+    }
+
+    outputFile << std::setw(4) << j << std::endl;
+
+    outputFile.close();
+}

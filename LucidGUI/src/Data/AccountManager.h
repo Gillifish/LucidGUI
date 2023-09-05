@@ -7,6 +7,7 @@
 #include <stdexcept>
 #include <map>
 #include <sstream>
+#include <ctime>
 
 #include "json.hpp"
 
@@ -40,7 +41,7 @@ public:
     std::vector<Account> &getByTag(std::string tag);
     Account &getByIndex(int index);
     std::vector<Account>& data();
-    // Returns the filepath
     const std::string &filepath();
     int size();
+    void createBackup();
 };

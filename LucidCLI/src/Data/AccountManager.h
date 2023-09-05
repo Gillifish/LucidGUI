@@ -43,4 +43,5 @@ public:
     // Returns the filepath
     const std::string &filepath();
     int size();
+    void createBackup();
 };

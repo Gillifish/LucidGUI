@@ -168,6 +168,11 @@ void LucidGui::mainWindow()
                 m_showAddWindow = true;
             }
 
+            if (ImGui::MenuItem("Create Backup"))
+            {
+                m_db.createBackup();
+            }
+
             ImGui::EndMenu();
         }
 

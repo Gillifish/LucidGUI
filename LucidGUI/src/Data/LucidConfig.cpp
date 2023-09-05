@@ -36,6 +36,7 @@ void LucidConfig::loadFromFile()
 void LucidConfig::configSetup()
 {
     std::filesystem::create_directory(m_defaultDir + "/Lucid");
+    std::filesystem::create_directory(m_backupPath);
 
     std::ofstream createConfig(m_configpath);
 
