@@ -4,7 +4,6 @@
 #include <AccountManager.h>
 #include <LucidConfig.h>
 #include <LucidGui.h>
-#include <LucidConfigGui.h>
 
 #ifdef _WIN32
 #define OS_NAME "Windows"
