@@ -15,6 +15,7 @@
 
 int main()
 {
+    // Checks for Lucid directories other config
     LucidConfig config;
 
     std::string path;
