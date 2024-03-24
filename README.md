@@ -1,2 +1,2 @@
-# LucidCpp
-My personal password manager.
+# LucidGUI
+My personal password manager using C++ and imgui.
